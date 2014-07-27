@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0FF3A339-DF7E-4499-BA47-2F2E9A2822A3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CCStudio.Core</RootNamespace>
+    <AssemblyName>CCStudio.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="APIs\BitAPI.cs" />
+    <Compile Include="APIs\FileSystemAPI.cs" />
+    <Compile Include="APIs\HttpAPI.cs" />
+    <Compile Include="APIs\ILuaAPI.cs" />
+    <Compile Include="APIs\ILuaObject.cs" />
+    <Compile Include="APIs\OsAPI.cs" />
+    <Compile Include="APIs\PeripheralAPI.cs" />
+    <Compile Include="APIs\RedstoneAPI.cs" />
+    <Compile Include="APIs\TerminalAPI.cs" />
+    <Compile Include="Computers\Computer.cs" />
+    <Compile Include="Computers\ComputerConfig.cs" />
+    <Compile Include="Computers\EventManager.cs" />
+    <Compile Include="Computers\LuaVM.cs" />
+    <Compile Include="Computers\Redstone.cs" />
+    <Compile Include="Computers\Session.cs" />
+    <Compile Include="Computers\Time\Alarm.cs" />
+    <Compile Include="Computers\Time\ComputerTime.cs" />
+    <Compile Include="Computers\Time\IdTimer.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Display\Pixel.cs" />
+    <Compile Include="Display\PixelGrid.cs" />
+    <Compile Include="Display\Terminal.cs" />
+    <Compile Include="Filesystem\ComboMount.cs" />
+    <Compile Include="Filesystem\DirectoryMount.cs" />
+    <Compile Include="Filesystem\FilePath.cs" />
+    <Compile Include="Filesystem\FileUtilities.cs" />
+    <Compile Include="Filesystem\IMount.cs" />
+    <Compile Include="InverseComparer.cs" />
+    <Compile Include="Peripheral\IPeripheral.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Serialization\SerializableDictionary.cs" />
+    <Compile Include="Serialization\SerializeClass.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LuaInterface\LuaInterface\KopiLua\KopiLua\KopiLua.Net40.csproj">
+      <Project>{e8ddbc21-ef74-4aba-9c49-bfc702be25d8}</Project>
+      <Name>KopiLua.Net40</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LuaInterface\LuaInterface\LuaInterface.csproj">
+      <Project>{69e39ee0-3ac0-479a-988f-16b2023b16ff}</Project>
+      <Name>LuaInterface</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
