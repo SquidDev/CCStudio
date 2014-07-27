@@ -74,7 +74,7 @@
     <Compile Include="Serialization\SerializeClass.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LuaInterface\LuaInterface\KopiLua\KopiLua\KopiLua.Net40.csproj">
+    <ProjectReference Include="..\LuaInterface\KopiLua\KopiLua\KopiLua.Net40.csproj">
       <Project>{e8ddbc21-ef74-4aba-9c49-bfc702be25d8}</Project>
       <Name>KopiLua.Net40</Name>
     </ProjectReference>

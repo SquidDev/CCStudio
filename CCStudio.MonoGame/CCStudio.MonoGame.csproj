@@ -75,7 +75,7 @@
     <Content Include="Icon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CCEmu.CCLib\CCStudio.Core.csproj">
+    <ProjectReference Include="..\CCStudio.Core\CCStudio.Core.csproj">
       <Project>{0ff3a339-df7e-4499-ba47-2f2e9a2822a3}</Project>
       <Name>CCStudio.Core</Name>
     </ProjectReference>
