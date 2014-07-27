@@ -15,25 +15,38 @@ namespace CCStudio.MonoGame.Computers
 {
     public class TerminalRenderer : IGameElement
     {
-        //Computer Info
-        protected Computer Comp;
-        protected Terminal Term;
+        /// <summary>
+        /// Computer Info
+        /// </summary>
+        protected Computer Owner;
 
-        //Parent game
+        protected BasicTerminal Terminal;
+
+        /// <summary>
+        /// Parent game
+        /// </summary>
         protected CoreGame Game;
 
-        //Render utilities
+        /// <summary>
+        /// Render utilities
+        /// </summary>
         protected Texture2D BackgroundTexture;
         protected SpriteFont Font;
 
-        //Size of pixels
+        /// <summary>
+        /// Size of pixels
+        /// </summary>
         public static readonly Point PixelSize = new Point(12, 18);
 
-        //Mouse info
+        /// <summary>
+        /// Mouse info
+        /// </summary>
         public MouseButtons FirstDown = MouseButtons.Null;
         public Point LastPosition;
 
-        // Drawing info
+        /// <summary>
+        /// Drawing info
+        /// </summary>
         protected RenderTarget2D Target;
 
         protected bool TargetBUse = false;
@@ -45,13 +58,16 @@ namespace CCStudio.MonoGame.Computers
 
         protected Dictionary<int, IdTimer> KeysDown = new Dictionary<int, IdTimer>();
 
-        public TerminalRenderer(Computer Comp, CoreGame Gme, Rectangle Size) : base(Gme.Batch)
+        public TerminalRenderer(Computer Owner, CoreGame Game, Rectangle Size) : base(Game.Batch)
         {
             //Load assets
             Font = AssetManager.CoreFont;
             BackgroundTexture = AssetManager.PixelBackground;
 
-            this.Game = Gme;
+            this.Game = Game;
+
+            Terminal = new BasicTerminal();
+            Owner.Terminal = Terminal;
 
             //IGameElement setters
             this.Size = Size;
@@ -61,38 +77,19 @@ namespace CCStudio.MonoGame.Computers
             this.Enabled = true;
 
             //Load computer
-            this.Comp = Comp;
-            Term = Comp.Term;
-
-            //Listen to events
-            Term.TerminalChanged += Term_TerminalChanged;
+            this.Owner = Owner;
 
             //Set target
             Target = new RenderTarget2D(Game.GraphicsDevice, Size.Width, Size.Height);
 
             TargetTexture = (Texture2D)Target;
-            IBatch = new SpriteBatch(Gme.GraphicsDevice);
+            IBatch = new SpriteBatch(Game.GraphicsDevice);
         }
-
-        #region Terminal Events
-        protected void Term_TerminalChanged(Terminal sender)
-        {
-            NeedRender = true;
-        }
-        #endregion
 
         #region Drawing
         public override void Draw(GameTime Time)
         {
-            /*
-            if (NeedRender == true)
-            {
-                NeedRender = false;
-                //DrawToRender();
-            }*/
-
-            //Batch.Draw(TargetTexture, Size, Color.White);
-            foreach (Pixel Pix in Term.Pixels.Pixels)
+            foreach (Pixel Pix in Terminal.Pixels.Pixels)
             {
                 DrawPixel(Batch, Pix);
             }
@@ -112,32 +109,13 @@ namespace CCStudio.MonoGame.Computers
                 Batch.DrawString(Font, Pix.Character.ToString(), new Vector2(X, Y), Foreground);
             }
         }
-        protected void DrawToRender()
-        {
-            Game.Graphics.GraphicsDevice.SetRenderTarget(Target);
-            
-            //Game.Graphics.GraphicsDevice.Clear(Color.Black);
-
-            IBatch.Begin();
-
-            foreach (Pixel Pix in Term.Pixels.Pixels)
-            {
-                DrawPixel(IBatch, Pix);
-            }
-            IBatch.End();
-
-            Game.Graphics.GraphicsDevice.SetRenderTarget(null);
-
-            TargetTexture = (Texture2D)Target;
-        }
-
         #endregion
 
         #region Mouse Events
         public override void MouseDown(MouseButtons Button, Point Position)
         {
             Point TermPosition = (Position - new Point(Size.X, Size.Y)) / PixelSize;
-            Comp.PushEvent("mouse_click", (int)Button, TermPosition.X + 1, TermPosition.Y + 1);
+            Owner.PushEvent("mouse_click", (int)Button, TermPosition.X + 1, TermPosition.Y + 1);
 
             //Set first button down
             if (FirstDown == MouseButtons.Null) FirstDown = Button;
@@ -151,7 +129,7 @@ namespace CCStudio.MonoGame.Computers
 
                 if (TermPosition != LastPosition)
                 {
-                    Comp.PushEvent("mouse_drag", ((int)FirstDown), TermPosition.X + 1, TermPosition.Y + 1);
+                    Owner.PushEvent("mouse_drag", ((int)FirstDown), TermPosition.X + 1, TermPosition.Y + 1);
                     LastPosition = TermPosition;
                 }
             }
@@ -165,7 +143,7 @@ namespace CCStudio.MonoGame.Computers
         public override void MouseScroll(int Ammount)
         {
             //-1 for up, 1 for down
-            Comp.PushEvent("mouse_scroll", Ammount > 0 ? -1 : 1);
+            Owner.PushEvent("mouse_scroll", Ammount > 0 ? -1 : 1);
         }
         #endregion
         #region KeyEvents
@@ -180,7 +158,7 @@ namespace CCStudio.MonoGame.Computers
 
                 KeysDown.Add(KeyInt, KeyTime);
 
-                Comp.PushEvent("key", KeyInt);
+                Owner.PushEvent("key", KeyInt);
             }
         }
 
@@ -192,7 +170,7 @@ namespace CCStudio.MonoGame.Computers
 
             if (KeysDown.ContainsKey(TimerId))
             {
-                Comp.PushEvent("key", TimerId);
+                Owner.PushEvent("key", TimerId);
             }
             else
             {
@@ -219,7 +197,7 @@ namespace CCStudio.MonoGame.Computers
 
         public override void KeyPress(char Character)
         {
-            if(Character >= 32 && Character <= 127) Comp.PushEvent("char", Character.ToString());
+            if(Character >= 32 && Character <= 127) Owner.PushEvent("char", Character.ToString());
         }
         #endregion
     }

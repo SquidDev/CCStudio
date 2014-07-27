@@ -7,15 +7,15 @@ namespace CCStudio.Core.Display
     /// </summary>
     public class Pixel
     {
-        public int Background;
-        public int Foreground;
+        public byte Background;
+        public byte Foreground;
 
         public char Character;
 
         public readonly int X;
         public readonly int Y;
 
-        public Pixel(int X, int Y, int Back = 15, int Fore = 1, char Text = ' ')
+        public Pixel(int X, int Y, byte Back = 15, byte Fore = 1, char Text = ' ')
         {
             this.X = X;
             this.Y = Y;

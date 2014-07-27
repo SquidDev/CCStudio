@@ -75,15 +75,15 @@
     <Content Include="Icon.ico" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\CCFont.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\CCStudio.Core\CCStudio.Core.csproj">
       <Project>{0ff3a339-df7e-4499-ba47-2f2e9a2822a3}</Project>
       <Name>CCStudio.Core</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Content\CCFont.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -12,55 +12,54 @@ namespace CCStudio.Core.APIs
             "setCursorPos", "setCursorBlink", "getCursorPos", "getSize",  
             "setTextColour", "setTextColor", 
             "setBackgroundColour", "setBackgroundColor",
-            "isColour", "isColor", "Debug"
+            "isColour", "isColor"
         };
 
-        protected Terminal Term;
+        protected ITerminal Terminal;
 
         #region Public API methods
         public void write(object Text)
         {
-            if(Text != null) Term.Write(Text.ToString());
+            if(Text != null) Terminal.Write(Text.ToString());
         }
         public void scroll(int Number)
         {
-            Term.Scroll(Number);
+            Terminal.Scroll(Number);
         }
         public void clear()
         {
-            Term.Clear();
+            Terminal.Clear();
         }
         public void clearLine()
         {
-            Term.ClearLine();
+            Terminal.ClearLine();
         }
         #region Cursor
         public void setCursorPos(int X, int Y)
         {
-            Term.CursorX = Math.Max(1,X);
-            Term.CursorY = Math.Min(Term.Height, Y);
+            Terminal.SetCursorPos(X, Y);
         }
         public int[] getCursorPos()
         {
-            return new int[] { Term.CursorX, Term.CursorY };
+            return Terminal.GetCursorPos();
         }
         public void setCursorBlink(bool Blink)
         {
-            Term.CursorBlink = Blink;
+            Terminal.SetCursorBlink(Blink);
         }
         #endregion
         #region Colours
         public bool isColour()
         {
-            return Term.IsColour;
+            return Owner.Config.IsColour;
         }
         public void setTextColour(int Colour)
         {
-            Term.ForegroundColour = ParseColour(Colour);
+            Terminal.SetForegroundColour(ParseColour(Colour));
         }
         public void setBackgroundColour(int Colour)
         {
-            Term.BackgroundColour = ParseColour(Colour);
+            Terminal.SetBackgroundColour(ParseColour(Colour));
         }
         
         #endregion
@@ -72,11 +71,11 @@ namespace CCStudio.Core.APIs
 
         public int[] getSize()
         {
-            return new int[] { Term.Width, Term.Height };
+            return Terminal.GetSize();
         }
         #endregion
         #region Colour Utils
-        protected int ParseColour(int CurrentColour)
+        protected byte ParseColour(int CurrentColour)
         {
             if (CurrentColour <= 0) throw new ArgumentOutOfRangeException("Colour out of range", "colour");
 
@@ -84,9 +83,9 @@ namespace CCStudio.Core.APIs
             if (CurrentColour < 0 || CurrentColour > 15) throw new ArgumentOutOfRangeException("Colour out of range", "colour");
 
             //If not black or white, throw error;
-            if (!Term.IsColour && CurrentColour!=0 && CurrentColour!=15) throw new ArgumentException("Colour not supported", "colour");
+            if (!Owner.Config.IsColour && CurrentColour!=0 && CurrentColour!=15) throw new ArgumentException("Colour not supported", "colour");
 
-            return CurrentColour;
+            return (byte)CurrentColour;
         }
         protected int GetHighestBit(int Group)
         {
@@ -114,7 +113,7 @@ namespace CCStudio.Core.APIs
         public override void Load(Computer OwnerComputer)
         {
             base.Load(OwnerComputer);
-            Term = OwnerComputer.Term;
+            Terminal = OwnerComputer.Terminal;
         }
         #endregion    
     }

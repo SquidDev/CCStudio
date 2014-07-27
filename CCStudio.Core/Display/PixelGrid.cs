@@ -28,7 +28,7 @@ namespace CCStudio.Core.Display
         }
 
         #region Clear
-        public void Clear(int Background = 15)
+        public void Clear(byte Background = 15)
         {
             foreach (Pixel P in Pixels)
             {
@@ -37,7 +37,7 @@ namespace CCStudio.Core.Display
             }
         }
         #endregion
-        public void Scroll(int YAmmount, int Background = 15)
+        public void Scroll(int YAmmount, byte Background = 15)
         {
             if (YAmmount >= Height)
             {

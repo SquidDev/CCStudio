@@ -109,7 +109,7 @@ namespace CCStudio.Core.Computers
             };
 
             Config.Peripherals = new Dictionary<string, IPeripheral>();
-            Config.Redstone = new Redstone();
+            Config.Redstone = Redstone.Create();
 
             return Config;
         }

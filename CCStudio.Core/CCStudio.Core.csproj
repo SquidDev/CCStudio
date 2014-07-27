@@ -59,9 +59,10 @@
     <Compile Include="Computers\Time\IdTimer.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Display\ITerminal.cs" />
     <Compile Include="Display\Pixel.cs" />
     <Compile Include="Display\PixelGrid.cs" />
-    <Compile Include="Display\Terminal.cs" />
+    <Compile Include="Display\BasicTerminal.cs" />
     <Compile Include="Filesystem\ComboMount.cs" />
     <Compile Include="Filesystem\DirectoryMount.cs" />
     <Compile Include="Filesystem\FilePath.cs" />

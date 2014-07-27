@@ -37,7 +37,7 @@ namespace CCStudio.Core.Computers
 
         public EventManager Events { get; protected set; }
 
-        public Terminal Term;
+        public ITerminal Terminal;
 
         public ComputerConfig Config { get; protected set; }
         public string DisplayLabel
@@ -72,7 +72,6 @@ namespace CCStudio.Core.Computers
 
         protected void Initialise()
         {
-            Term = new Terminal();
             Events = new EventManager(this);
         }
         #endregion
