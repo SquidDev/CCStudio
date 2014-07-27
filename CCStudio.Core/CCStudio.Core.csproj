@@ -78,7 +78,7 @@
       <Project>{e8ddbc21-ef74-4aba-9c49-bfc702be25d8}</Project>
       <Name>KopiLua.Net40</Name>
     </ProjectReference>
-    <ProjectReference Include="..\LuaInterface\LuaInterface\LuaInterface.csproj">
+    <ProjectReference Include="..\LuaInterface\LuaInterface.csproj">
       <Project>{69e39ee0-3ac0-479a-988f-16b2023b16ff}</Project>
       <Name>LuaInterface</Name>
     </ProjectReference>

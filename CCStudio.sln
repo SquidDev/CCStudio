@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LuaInterface", "LuaInterfac
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KopiLua.Net40", "LuaInterface\KopiLua\KopiLua\KopiLua.Net40.csproj", "{E8DDBC21-EF74-4ABA-9C49-BFC702BE25D8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CCStudio.WPF", "CCStudio.WPF\CCStudio.WPF.csproj", "{1CE9CC26-3452-4F25-BDB1-A8F184859B6E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -107,6 +109,26 @@ Global
 		{E8DDBC21-EF74-4ABA-9C49-BFC702BE25D8}.ReleaseKopiLua|Mixed Platforms.ActiveCfg = ReleaseKopiLua|Any CPU
 		{E8DDBC21-EF74-4ABA-9C49-BFC702BE25D8}.ReleaseKopiLua|Mixed Platforms.Build.0 = ReleaseKopiLua|Any CPU
 		{E8DDBC21-EF74-4ABA-9C49-BFC702BE25D8}.ReleaseKopiLua|x86.ActiveCfg = ReleaseKopiLua|Any CPU
+		{1CE9CC26-3452-4F25-BDB1-A8F184859B6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CE9CC26-3452-4F25-BDB1-A8F184859B6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CE9CC26-3452-4F25-BDB1-A8F184859B6E}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{1CE9CC26-3452-4F25-BDB1-A8F184859B6E}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{1CE9CC26-3452-4F25-BDB1-A8F184859B6E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1CE9CC26-3452-4F25-BDB1-A8F184859B6E}.DebugKopiLua|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CE9CC26-3452-4F25-BDB1-A8F184859B6E}.DebugKopiLua|Any CPU.Build.0 = Debug|Any CPU
+		{1CE9CC26-3452-4F25-BDB1-A8F184859B6E}.DebugKopiLua|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{1CE9CC26-3452-4F25-BDB1-A8F184859B6E}.DebugKopiLua|Mixed Platforms.Build.0 = Debug|Any CPU
+		{1CE9CC26-3452-4F25-BDB1-A8F184859B6E}.DebugKopiLua|x86.ActiveCfg = Debug|Any CPU
+		{1CE9CC26-3452-4F25-BDB1-A8F184859B6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CE9CC26-3452-4F25-BDB1-A8F184859B6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CE9CC26-3452-4F25-BDB1-A8F184859B6E}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{1CE9CC26-3452-4F25-BDB1-A8F184859B6E}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{1CE9CC26-3452-4F25-BDB1-A8F184859B6E}.Release|x86.ActiveCfg = Release|Any CPU
+		{1CE9CC26-3452-4F25-BDB1-A8F184859B6E}.ReleaseKopiLua|Any CPU.ActiveCfg = Release|Any CPU
+		{1CE9CC26-3452-4F25-BDB1-A8F184859B6E}.ReleaseKopiLua|Any CPU.Build.0 = Release|Any CPU
+		{1CE9CC26-3452-4F25-BDB1-A8F184859B6E}.ReleaseKopiLua|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{1CE9CC26-3452-4F25-BDB1-A8F184859B6E}.ReleaseKopiLua|Mixed Platforms.Build.0 = Release|Any CPU
+		{1CE9CC26-3452-4F25-BDB1-A8F184859B6E}.ReleaseKopiLua|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
