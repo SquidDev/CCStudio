@@ -1,6 +1,4 @@
-﻿using CCStudio.Core.Serialization;
-
-namespace CCStudio.Core.Computers
+﻿namespace CCStudio.Core.Computers
 {
     public class Redstone
     {

@@ -27,6 +27,9 @@ namespace CCStudio.MonoGame
             : base()
         {
             Graphics = new GraphicsDeviceManager(this);
+            Graphics.PreferredBackBufferWidth = 612;
+            Graphics.PreferredBackBufferHeight = 342;
+
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
         }
@@ -39,11 +42,11 @@ namespace CCStudio.MonoGame
         /// </summary>
         protected override void Initialize()
         {
+            //Ses = Session.Load("Computers/Dump.xml");
+            //Comp = new Computer(Ses.Computers[0]);
+
             Ses = new Session("Computers/Dump.xml");
             Comp = new Computer(Ses);
-
-            Ses.Save();
-            //Comp.TurnOn();
 
             Manager = new ElementManager(this);
             Components.Add(Manager);
@@ -61,7 +64,7 @@ namespace CCStudio.MonoGame
             //Load distributed content
             AssetManager.LoadContent(Content, GraphicsDevice);
 
-            Renderer = new TerminalRenderer(Comp, this, new Rectangle(50, 50, 612, 342));
+            Renderer = new TerminalRenderer(Comp, this, new Rectangle(0, 0, 612, 342));
             Manager.Add(Renderer);
 
             Comp.TurnOn();
@@ -73,6 +76,7 @@ namespace CCStudio.MonoGame
         protected override void UnloadContent()
         {
             AssetManager.PixelBackground.Dispose();
+            Ses.Save();
         }
 
         /// <summary>
