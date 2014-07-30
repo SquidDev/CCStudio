@@ -35,7 +35,7 @@ namespace CCStudio.Core.APIs
         {
             return A >> B;
         }
-        public int blsight(int A, int B)
+        public int blshift(int A, int B)
         {
             return B << A;
         }
