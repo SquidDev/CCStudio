@@ -93,6 +93,12 @@ namespace CCStudio.MonoGame.Computers
             {
                 DrawPixel(Batch, Pix);
             }
+
+            if (Terminal.CursorBlink && Time.TotalGameTime.Milliseconds % 600 < 300)
+            {
+                int Height = 2;
+                Batch.Draw(BackgroundTexture, new Rectangle(Terminal.CursorX * PixelSize.X  - PixelSize.X + Size.X, Terminal.CursorY * PixelSize.Y - Height + Size.Y, PixelSize.X, Height), ColorLookups.Colours[Terminal.ForegroundColour]);
+            }
         }
 
         protected void DrawPixel(SpriteBatch Batch, Pixel Pix)

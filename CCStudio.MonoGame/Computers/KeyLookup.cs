@@ -137,10 +137,11 @@ namespace CCStudio.MonoGame.Computers
             {Keys.J, 36},
             {Keys.K, 37},
             {Keys.L, 38},
+            {Keys.Left, 203},
             {Keys.LeftAlt, 56},
             {Keys.LeftControl, 29}, //Right control is 157??
             {Keys.LeftShift, 42},
-            {Keys.LeftWindows, 203},
+            {Keys.LeftWindows, 219},
             {Keys.M, 50},
             {Keys.Multiply, 55},
             {Keys.N, 39},

@@ -6,6 +6,7 @@ using CCStudio.MonoGame.Contents;
 using CCStudio.Core.Computers;
 using CCStudio.MonoGame.Components;
 using System;
+using System.IO;
 
 namespace CCStudio.MonoGame
 {
@@ -42,14 +43,17 @@ namespace CCStudio.MonoGame
         /// </summary>
         protected override void Initialize()
         {
-            if (true)
+            string LoadFile = "Computers/Dump.xml";
+            if (File.Exists(LoadFile))
             {
-                Ses = Session.Load("Computers/Dump.xml");
+                //Load from existing
+                Ses = Session.Load(LoadFile);
                 Comp = new Computer(Ses.Computers[0]);
             }
             else
             {
-                Ses = new Session("Computers/Dump.xml");
+                //Create new
+                Ses = new Session(LoadFile);
                 Comp = new Computer(Ses);
             }
 
