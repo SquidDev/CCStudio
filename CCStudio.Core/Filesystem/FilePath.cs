@@ -294,7 +294,16 @@ namespace CCStudio.Core.Filesystem
 
         public void ReadXml(XmlReader Reader)
         {
-            Path = Reader.ReadString();
+            Reader.MoveToContent();
+            if (!Reader.IsEmptyElement)
+            {
+                Path = Reader.ReadString();
+                Reader.ReadEndElement();
+            }
+            else
+            {
+                Reader.Skip();
+            }
         }
 
         public void WriteXml(XmlWriter Writer)

@@ -37,7 +37,12 @@ namespace CCStudio.Core.Serialization
             bool WasEmpty = Reader.IsEmptyElement;
             Reader.Read();
 
-            if (WasEmpty) return;
+            // Put as default empty dict
+            if (WasEmpty)
+            {
+                Dict = new Dictionary<TKey, TValue>();
+                return;
+            }
 
             while (Reader.NodeType != XmlNodeType.EndElement)
             {
@@ -54,7 +59,7 @@ namespace CCStudio.Core.Serialization
                 Dict.Add(Key, Value);
 
                 Reader.ReadEndElement();
-                Reader.MoveToContent();
+                //Reader.MoveToContent();
             }
             Reader.ReadEndElement();
         }

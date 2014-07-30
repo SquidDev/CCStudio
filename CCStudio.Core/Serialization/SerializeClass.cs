@@ -32,7 +32,7 @@ namespace CCStudio.Core.Serialization
             Type ClassType = this.Value.GetType();
             XmlSerializer Serializer = new XmlSerializer(ClassType);
 
-            Writer.WriteAttributeString(TypeAttribute, ClassType.Name);
+            Writer.WriteAttributeString(TypeAttribute, ClassType.AssemblyQualifiedName);
             Serializer.Serialize(Writer, Value);
         }
 

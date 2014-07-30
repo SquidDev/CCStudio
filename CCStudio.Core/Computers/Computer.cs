@@ -67,6 +67,11 @@ namespace CCStudio.Core.Computers
         {
             this.Config = Config;
 
+            if (Config.State != ComputerState.Stopped)
+            {
+                LuaStart();
+            }
+
             Initialise();
         }
 
@@ -129,6 +134,7 @@ namespace CCStudio.Core.Computers
                     VM.AddAPI(new RedstoneAPI());
                     VM.AddAPI(new PeripheralAPI());
                     VM.AddAPI(new FileSystemAPI());
+                    VM.AddAPI(new BitAPI());
 
                     LuaThread VMThread = VM.LuaThreadInstance;
 

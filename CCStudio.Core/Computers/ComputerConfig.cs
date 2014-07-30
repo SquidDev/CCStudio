@@ -33,6 +33,10 @@ namespace CCStudio.Core.Computers
         {
             get
             {
+                if (_Mount == null)
+                {
+                    _Mount = new ComboMount(Mounts.Dict.ToDictionary(Pair => Pair.Key, Pair => Pair.Value.Value));
+                }
                 return _Mount;
             }
             set
@@ -54,6 +58,10 @@ namespace CCStudio.Core.Computers
         {
             get
             {
+                if (_Peripherals == null)
+                {
+                    _Peripherals = SerializePeripherals.Dict.ToDictionary(Pair => Pair.Key, Pair => Pair.Value.Value);
+                }
                 return _Peripherals;
             }
             set

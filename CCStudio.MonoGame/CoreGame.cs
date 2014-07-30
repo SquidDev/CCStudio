@@ -42,11 +42,16 @@ namespace CCStudio.MonoGame
         /// </summary>
         protected override void Initialize()
         {
-            //Ses = Session.Load("Computers/Dump.xml");
-            //Comp = new Computer(Ses.Computers[0]);
-
-            Ses = new Session("Computers/Dump.xml");
-            Comp = new Computer(Ses);
+            if (true)
+            {
+                Ses = Session.Load("Computers/Dump.xml");
+                Comp = new Computer(Ses.Computers[0]);
+            }
+            else
+            {
+                Ses = new Session("Computers/Dump.xml");
+                Comp = new Computer(Ses);
+            }
 
             Manager = new ElementManager(this);
             Components.Add(Manager);
